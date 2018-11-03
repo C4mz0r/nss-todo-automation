@@ -1,9 +1,3 @@
-describe('My First Test', function() {
-	it('Does not do much!', function() {
-		expect(true).to.equal(true)
-	})
-})
-
 describe('API tests', function() {
 	
 	it('returns a 200 status', function() {
