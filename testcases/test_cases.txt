@@ -1,1 +1,9 @@
-//please add your test cases here.
+API Test Cases:
+- Test service status of the API endpoint (only one in this case)
+- Find how many tasks do not have "category" assigned
+- Aggregate and print only "task names"
+- Read API response and print tasks in descending "due date" order
+- Count and validate the number of tasks
+
+UI Test Cases:
+// UI Tests go here
