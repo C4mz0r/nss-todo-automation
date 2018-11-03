@@ -20,10 +20,11 @@ describe('UI tests', function() {
 		cy.get('select[name=due_day]').as('lstDueDay');
 		cy.get('select[name=due_month]').as('lstDueMonth');
 		cy.get('select[name=due_year]').as('lstDueYear');
+		cy.get('input[name=allbox]').as('chkToggle');
 		cy.get('li').as('taskItems');
 	});
 
-	it('add a task with no category', function() {
+	it.skip('add a task with no category', function() {
 		let taskName = 'Test Task no category';
 
 		// Add the new category
@@ -34,7 +35,7 @@ describe('UI tests', function() {
 		expect(cy.get('@taskItems').contains(taskName));
 	});
 
-	it('add a task with category', function() {
+	it.skip('add a task with category', function() {
 		let taskName = 'Test Task with category';
 		let category = 'Play'
 
@@ -49,7 +50,7 @@ describe('UI tests', function() {
 		// TODO:  API may be appropriate since cateory is colorized
 	});
 
-	it('add a task with no due date', function() {
+	it.skip('add a task with no due date', function() {
 		let taskName = 'Test Task with no due date';
 
 		cy.get('@txtTaskName').type(taskName);
@@ -59,7 +60,7 @@ describe('UI tests', function() {
 		expect(cy.get('@taskItems').contains(taskName).contains('(None)'));
 	});
 
-	it('add a task with past due date', function() {
+	it.skip('add a task with past due date', function() {
 		let taskName = 'Test Task overdue';
 
 		cy.get('@txtTaskName').type(taskName);
@@ -72,7 +73,7 @@ describe('UI tests', function() {
 		expect(cy.get('@taskItems').contains(taskName).contains('(15/01/18)'));
 	});
 
-	it('add a task that exists already shows error message', function() {
+	it.skip('add a task that exists already shows error message', function() {
 		let taskName = 'Finish automation.';
 
 		cy.get('@txtTaskName').type(taskName);
@@ -81,6 +82,69 @@ describe('UI tests', function() {
 		// Confirm that it shows the error message
 		expect(cy.get('body').contains('Sorry that TODO item already exists.'));
 	});
+
+	it.skip('complete a selected task', function() {
+		let taskName = 'Finish automation.';
+
+		cy.get('@taskItems').contains(taskName).siblings('input[type=checkbox]').click();
+		cy.get('@btnCompleteTask').click();
+
+		// TODO:  Confirm that it is completed
+
+	});
+
+	it.skip('complete multiple tasks at once', function() {
+  	let taskName = 'Finish automation.';
+		cy.get('@taskItems').contains(taskName).siblings('input[type=checkbox]').click();
+
+		let secondTaskName = 'Finish reading research papers';
+		cy.get('@taskItems').contains(secondTaskName).siblings('input[type=checkbox]').click();
+
+		cy.get('@btnCompleteTask').click();
+		
+		// TODO:  Confirm that it is completed
+
+	});
+
+	it.skip('complete a completed task', function() {
+		let taskName = 'Soccer match!';
+
+		cy.get('@taskItems').contains(taskName).parent().siblings('input[type=checkbox]').click();
+		cy.get('@btnCompleteTask').click();
+
+		// TODO:  Confirm that it is no longer completed
+
+	});
+
+	it.skip('remove a selected task', function() {
+		let taskName = 'Soccer match!';
+
+		cy.get('@taskItems').contains(taskName).parent().siblings('input[type=checkbox]').click();
+		cy.get('@btnRemoveTask').click();
+		
+		expect(cy.get('@taskItems').should('have.length', 8));
+	});
+
+
+	it.skip('remove multiple tasks at once', function() {
+  	let taskName = 'Finish automation.';
+		cy.get('@taskItems').contains(taskName).siblings('input[type=checkbox]').click();
+
+		let secondTaskName = 'Finish reading research papers';
+		cy.get('@taskItems').contains(secondTaskName).siblings('input[type=checkbox]').click();
+
+		cy.get('@btnRemoveTask').click();
+		
+		expect(cy.get('@taskItems').should('have.length', 7));
+	});
+
+	it('remove all tasks', function() {
+		cy.get('@chkToggle').click();
+		cy.get('@btnRemoveTask').click();
+
+		expect(cy.get('@taskItems').should('have.length', 0));
+	});
+
 
 
 });
