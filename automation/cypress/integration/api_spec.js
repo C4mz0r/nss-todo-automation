@@ -1,5 +1,12 @@
 describe('API tests', function() {
 	
+	before(function(){
+		// Reset the data to known defaults
+		console.log('Resetting todo list state');
+		cy.exec(Cypress.config('resetToDoList'));
+		cy.exec(Cypress.config('resetCategoryList'));
+	});
+
 	it('returns a 200 status', function() {
 		cy.request('/fake-api-call.php').its('status').should('equal', 200)
 	})

@@ -157,6 +157,48 @@ describe('UI tests', function() {
 
 	describe('Category Management', function(){
 		
+		it('add a new category without color', function(){
+			cy.get('@txtCategoryName').type('new category name');
+			cy.get('@lstCategoryColor').select('None');
+			cy.get('@btnAddCategory').click();
+			expect(cy.get('a[title="Remove this category"]').should('have.length', 5));
+		});
+
+		it('add a new category with color', function(){
+			cy.get('@txtCategoryName').type('new category name');
+			cy.get('@lstCategoryColor').select('Blue');
+			cy.get('@btnAddCategory').click();
+			expect(cy.get('a[title="Remove this category"]').should('have.length', 5));
+		});
+
+		it('add a category that already exists', function(){
+			cy.get('@txtCategoryName').type('College');
+			cy.get('@btnAddCategory').click();
+			// Confirm that it shows the error message
+			expect(cy.get('body').contains('The category you want to add already exists'));
+		});
+
+		it('remove a category', function(){
+			cy.get('a[title="Remove this category"]').first().click();
+			cy.get('a[href*="confirm"]').click();
+			expect(cy.get('a[title="Remove this category"]').should('have.length', 3));
+		});
+		
+		it('remove a category but then choose nevermind', function(){
+			cy.get('a[title="Remove this category"]').first().click();
+			cy.get('a[href*="back"]').click();
+			expect(cy.get('a[title="Remove this category"]').should('have.length', 4));
+		});
+
+		it('remove all categories', function(){
+			for(let i=0; i<4; i++) {
+				cy.get('a[title="Remove this category"]').first().click();
+				cy.get('a[href*="confirm"]').click();
+			}
+			expect(cy.get('a[title="Remove this category"]').should('have.length', 0));
+		});
+		
+
 	});
 
 });

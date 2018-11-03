@@ -25,7 +25,7 @@ Task Management
 - Remove a selected task
 - Remove multiple tasks at once
 - Remove without selecting any tasks
-- Remove all tasks (empty list)
+- Remove all tasks (empty list) [BUG]
 - Check for attacks (XSS, etc.)
 
 Category Management
@@ -37,7 +37,7 @@ Category Management
 - Add many categories (limits?)
 - Remove a category
 - Remove a category but then choose nevermind
-- Remove all categories
+- Remove all categories [BUG]
 - Check for attacks (XSS, etc.)
 
 Widgets
@@ -60,5 +60,10 @@ Scope of Testing:
 
 
 Defects / Feature Requests:
-
-
+- Webpage shows error "Warning: Invalid argument supplied for foreach()" if no tasks are in the list
+- Webpage shows error "Warning: Invalid argument supplied for foreach()" if no categories exist
+- Last updated time shows in CET, should show in users timezone
+- Due date has 3 dropdowns which may cause confusion.  Calendar control would enhance usability.
+- No errors are displayed if user clicks Add without entering text.  Disabling the add button when text field empty would enhance usability.
+- No errors are displayed if user clicks Add category without entering text.  Disabling the add button when text field empty would enhance usability.
+- JavaScript can be entered as Task or Category, which executes when next user loads it.  This content should be disallowed or encoded to prevent unintended code execution.
