@@ -7,3 +7,58 @@ API Test Cases:
 
 UI Test Cases:
 // UI Tests go here
+
+Task Management
+---------------
+- Add a task with no category
+- Add a task with category (College/Leisure/Play/Personal)
+- Add a task with no due date
+- Add a task with future due date
+- Add a task with past due date (overdue)
+- Add a task that exists already
+- Add a task without entering any text
+- Add many tasks (limits?)
+- Complete a selected task
+- Complete multiple tasks at once
+- Complete without selecting any tasks
+- Complete a completed task
+- Remove a selected task
+- Remove multiple tasks at once
+- Remove without selecting any tasks
+- Remove all tasks (empty list)
+- Check for attacks (XSS, etc.)
+
+Category Management
+-------------------
+- Add a new category without color
+- Add a new category with color
+- Add a category that already exists
+- Add category without entering any text
+- Add many categories (limits?)
+- Remove a category
+- Remove a category but then choose nevermind
+- Remove all categories
+- Check for attacks (XSS, etc.)
+
+Widgets
+-------
+- Show / hide advanced settings
+- Toggle tasks
+- List displays last updated time
+
+Scope of Testing:
+- API automation as listed above
+- UI automation in latest Chrome (see automation folder)
+- Manual testing in Chrome as listed above
+- Browsers other than Chrome are not tested
+- Performance / Stress testing is not performed
+- Testing with other character sets is not performed
+- Usability testing is not performed
+- Mobile device testing is not performed
+- Responsive design is not tested (e.g. different screen sizes)
+
+
+
+Defects / Feature Requests:
+
+
