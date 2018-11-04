@@ -42,6 +42,8 @@ Category Management
 - Remove a category but then choose nevermind
 - Remove all categories [BUG]
 - Check for attacks (XSS, etc.) [BUG] [Not Automated]
+- Rename a category [Not Automated]
+- Recolor a category [Not Automated]
 
 Widgets
 -------
@@ -52,6 +54,7 @@ Widgets
 Scope of Testing:
 - API automation as listed above
 - UI automation in latest Chrome (see automation folder)
+- UI automation does not UI colors for categories - that is covered by manual testing
 - Manual testing in Chrome as listed above
 - Browsers other than Chrome are not tested
 - Performance / Stress testing is not performed
@@ -60,6 +63,7 @@ Scope of Testing:
 - Mobile device testing is not performed
 - Responsive layout is not tested (e.g. different screen sizes)
 - Concurrent use is not tested
+- Settings.ini file is not tested
 
 Defects / Feature Requests:
 - Webpage shows error "Warning: Invalid argument supplied for foreach()" if no tasks are in the list
