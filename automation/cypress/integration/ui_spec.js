@@ -173,6 +173,17 @@ describe('UI tests', function() {
 	
 	});
 
+	describe('Task Editing', function(){		
+		it('edit a task name', function(){
+			let appendText = '*** Renamed Task ***';
+			cy.get('a[title="Edit"]').first().click();
+			cy.get('input[name="data"]').type(appendText);
+			cy.get('input[value="Update"]').click();
+			// Task should have the new text appended on it
+			expect(cy.get('@taskItems').contains(appendText));
+		});
+	});
+
 	describe('Category Management', function(){
 		
 		it('add a new category without color', function(){

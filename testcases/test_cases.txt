@@ -16,8 +16,8 @@ Task Management
 - Add a task with future due date
 - Add a task with past due date (overdue)
 - Add a task that exists already
-- Add a task without entering any text
-- Add many tasks (limits?)
+- Add a task without entering any text [Not Automated]
+- Add many tasks (limits?)  [Not Automated]
 - Complete a selected task
 - Complete multiple tasks at once
 - Complete without selecting any tasks
@@ -26,19 +26,22 @@ Task Management
 - Remove multiple tasks at once
 - Remove without selecting any tasks
 - Remove all tasks (empty list) [BUG]
-- Check for attacks (XSS, etc.) [BUG]
+- Check for attacks (XSS, etc.) [BUG] [Not Automated]
+- Edit a task name [BUG]
+- Edit a task category [Not Automated]
+- Edit a task due date [Not Automated]
 
 Category Management
 -------------------
 - Add a new category without color
 - Add a new category with color
 - Add a category that already exists
-- Add category without entering any text
-- Add many categories (limits?)
+- Add category without entering any text [Not Automated]
+- Add many categories (limits?) [Not Automated]
 - Remove a category
 - Remove a category but then choose nevermind
 - Remove all categories [BUG]
-- Check for attacks (XSS, etc.) [BUG]
+- Check for attacks (XSS, etc.) [BUG] [Not Automated]
 
 Widgets
 -------
@@ -61,6 +64,7 @@ Scope of Testing:
 Defects / Feature Requests:
 - Webpage shows error "Warning: Invalid argument supplied for foreach()" if no tasks are in the list
 - Webpage shows error "Warning: Invalid argument supplied for foreach()" if no categories exist
+- Webpage shows error "Warning: Invalid argument supplied for foreach()" if editing a task with no categories assigned
 - Last updated time shows in CET, should show in users timezone
 - Due date has 3 dropdowns which may cause confusion.  Calendar control would enhance usability.
 - No errors are displayed if user clicks Add without entering text.  Disabling the add button when text field empty would enhance usability.
