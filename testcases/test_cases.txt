@@ -26,7 +26,7 @@ Task Management
 - Remove multiple tasks at once
 - Remove without selecting any tasks
 - Remove all tasks (empty list) [BUG]
-- Check for attacks (XSS, etc.)
+- Check for attacks (XSS, etc.) [BUG]
 
 Category Management
 -------------------
@@ -38,13 +38,13 @@ Category Management
 - Remove a category
 - Remove a category but then choose nevermind
 - Remove all categories [BUG]
-- Check for attacks (XSS, etc.)
+- Check for attacks (XSS, etc.) [BUG]
 
 Widgets
 -------
 - Show / hide advanced settings
 - Toggle tasks
-- List displays last updated time
+- List displays last updated time [BUG]
 
 Scope of Testing:
 - API automation as listed above
@@ -55,9 +55,8 @@ Scope of Testing:
 - Testing with other character sets is not performed
 - Usability testing is not performed
 - Mobile device testing is not performed
-- Responsive design is not tested (e.g. different screen sizes)
-
-
+- Responsive layout is not tested (e.g. different screen sizes)
+- Concurrent use is not tested
 
 Defects / Feature Requests:
 - Webpage shows error "Warning: Invalid argument supplied for foreach()" if no tasks are in the list

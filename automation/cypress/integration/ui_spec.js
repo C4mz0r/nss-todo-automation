@@ -48,8 +48,18 @@ describe('UI tests', function() {
 
 			// Confirm that it appears in the list
 			expect(cy.get('@taskItems').contains(taskName));
+			
 			// Confirm that it has the correct category
-			// TODO:  API may be appropriate since cateory is colorized
+			// Use API since html checking is flaky (i.e. based on text color)
+			cy.request('/fake-api-call.php').then(function(response){
+				let json = JSON.parse(response.body);
+				let task = json.filter(function(element){
+					return element['task name'] == taskName;
+				});
+				// Array, so get first (only) element
+				expect(task[0].category).to.equal('3');
+			});
+
 		});
 
 		it('add a task with no due date', function() {
@@ -93,8 +103,8 @@ describe('UI tests', function() {
 			cy.get('@taskItems').contains(taskName).siblings('input[type=checkbox]').click();
 			cy.get('@btnCompleteTask').click();
 
-			// TODO:  Confirm that it is completed
-
+			// Completed items have a strike
+			expect(cy.get('@taskItems').contains(taskName).parent().find('strike'))		
 		});
 
 		it('complete multiple tasks at once', function() {
@@ -106,8 +116,8 @@ describe('UI tests', function() {
 
 			cy.get('@btnCompleteTask').click();
 		
-			// TODO:  Confirm that it is completed
-
+			// Completed items have a strike
+			expect(cy.get('@taskItems').contains(taskName).parent().find('strike'))		
 		});
 
 		it('complete a completed task', function() {
@@ -116,7 +126,16 @@ describe('UI tests', function() {
 			cy.get('@taskItems').contains(taskName).parent().siblings('input[type=checkbox]').click();
 			cy.get('@btnCompleteTask').click();
 
-			// TODO:  Confirm that it is no longer completed
+			// Confirm that it is no longer completed
+			// Use API since html checking is flaky
+			cy.request('/fake-api-call.php').then(function(response){
+				let json = JSON.parse(response.body);
+				let task = json.filter(function(element){
+					return element['task name'] == taskName;
+				});
+				// Array, so get first (only) element
+				expect(task[0].status).to.not.equal('c');
+			});
 
 		});
 	});
@@ -153,7 +172,6 @@ describe('UI tests', function() {
 		});
 	
 	});
-
 
 	describe('Category Management', function(){
 		
