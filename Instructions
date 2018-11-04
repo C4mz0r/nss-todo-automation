@@ -1,0 +1,8 @@
+- xampp was installed on Linux to default location (/opt/lampp)
+- Todo list is stored in /opt/lampp/htdocs/nss-todo-automation
+- start the webserver:  /opt/lampp/lampp start
+- open cypress (I was using the app version)
+- Select project, choose nss-todo-automation/automation, click OK
+- Should see INTEGRATION TESTS with api_spec.js / ui_spec.js
+- Run the specs
+- Note:  The automation resets the todo list to the default data for the test runs, but uses the cp command so it would need to be modified to have another config specific to Windows machines.
